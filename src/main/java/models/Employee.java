@@ -37,10 +37,10 @@ import lombok.Setter;
             query = JpaConst.Q_EMP_GET_BY_CODE_AND_PASS_DEF)
 })
 
-@Getter //全てのクラスフィールドについてgetterを自動生成する(Lombok)
-@Setter //全てのクラスフィールドについてsetterを自動生成する(Lombok)
-@NoArgsConstructor //引数なしコンストラクタを自動生成する(Lombok)
-@AllArgsConstructor //全てのクラスフィールドを引数にもつ引数ありコンストラクタを自動生成する(Lombok)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Employee {
 
