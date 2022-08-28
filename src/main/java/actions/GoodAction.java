@@ -43,7 +43,7 @@ public class GoodAction extends ActionBase {
 
         rv.setReport_id(toNumber(getRequestParam(AttributeConst.REP_ID)));;
         rv.setEmployee_id(id);
-        GoodView z = service.findOne(id);
+        GoodView z = service.findOne(rv.getReport_id(),rv.getEmployee_id());
 
         if(z==null){
 

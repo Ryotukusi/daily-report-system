@@ -2,6 +2,8 @@ package services;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import actions.views.EmployeeConverter;
 import actions.views.EmployeeView;
 import actions.views.GoodConverter;
@@ -50,9 +52,67 @@ public class GoodService extends ServiceBase {
         return goods_count;
     }
 
-   public GoodView findOne(int Good) {
-       return GoodConverter.toView(findOneInternal(Good));
-   }
+    public GoodView findOne(int report_id , int emplyee_id) {
+        Goods e = null;
+        try {
+
+            e = em.createNamedQuery(JpaConst.Q_GOODS_GET_BY_CODE_AND_PASS, Goods.class)
+                    .setParameter(JpaConst.REP2_COL_ID,report_id )
+                    .setParameter(JpaConst.EMP2_COL_ID,emplyee_id)
+                    .getSingleResult();
+
+        } catch (NoResultException ex) {
+        }
+
+        return GoodConverter.toView(e);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   //   public EmployeeView findOne(String code, String plainPass, String pepper) {
+//       Employee e = null;
+//       try {
+//           String pass = EncryptUtil.getPasswordEncrypt(plainPass, pepper);
+//
+//           e = em.createNamedQuery(JpaConst.Q_EMP_GET_BY_CODE_AND_PASS, Employee.class)
+//                   .setParameter(JpaConst.JPQL_PARM_CODE, code)
+//                   .setParameter(JpaConst.JPQL_PARM_PASSWORD, pass)
+//                   .getSingleResult();
+//
+//       } catch (NoResultException ex) {
+//       }
+//
+//       return EmployeeConverter.toView(e);
+//
+//   }
+
+
+
+
+
+
+
+
+
+
 
    public void create(GoodView ev) {
 
