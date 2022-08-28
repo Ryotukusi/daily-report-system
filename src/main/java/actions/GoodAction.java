@@ -32,18 +32,15 @@ public class GoodAction extends ActionBase {
 
     public void doPostGood() throws ServletException, IOException {
 
-
-        putRequestScope(AttributeConst.TOKEN, getTokenId());
+        getSessionScope(AttributeConst.LOGIN_EMP);
 
         GoodView rv = new GoodView();
-        putRequestScope(AttributeConst.EMP_ID, rv);
+        putRequestScope(AttributeConst.LOGIN_EMP, rv);
         putRequestScope(AttributeConst.REP_ID, rv);
 
-
-        rv.setReport_id(toNumber(getRequestParam(AttributeConst.REP_ID)));
-        rv.setEmployee_id(toNumber(getRequestParam(AttributeConst.EMP_ID)));
-
-        GoodView z = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
+        rv.setReport_id(toNumber(getRequestParam(AttributeConst.EMP_ID)));
+        rv.setEmployee_id(toNumber(getRequestParam(AttributeConst.REP_ID)));
+        GoodView z = service.findOne(toNumber(getRequestParam(AttributeConst.EMP_ID)));
 
         if(z==null){
 
