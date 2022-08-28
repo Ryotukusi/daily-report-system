@@ -41,8 +41,8 @@ public class GoodAction extends ActionBase {
         putRequestScope(AttributeConst.LOGIN_EMP, rv);
         putRequestScope(AttributeConst.REP_ID, rv);
 
-        rv.setReport_id(id);
-        rv.setEmployee_id(toNumber(getRequestParam(AttributeConst.REP_ID)));
+        rv.setReport_id(toNumber(getRequestParam(AttributeConst.REP_ID)));;
+        rv.setEmployee_id(id);
         GoodView z = service.findOne(id);
 
         if(z==null){
