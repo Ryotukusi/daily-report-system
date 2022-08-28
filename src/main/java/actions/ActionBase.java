@@ -82,7 +82,36 @@ public abstract class ActionBase {
 
         response.sendRedirect(redirectUrl);
 
+
+
+
+
     }
+    protected void redirect(ForwardConst action, ForwardConst command , int report_id)
+
+            throws ServletException, IOException{   String redirectUrl = request.getContextPath() + "/?action=" + action.getValue() +"&id="+ report_id;
+
+            //http://localhost:8080/daily_report_system/?action=Report&command=show&id=3
+
+
+            if (command != null) {
+                redirectUrl = redirectUrl + "&command=" + command.getValue();
+
+
+
+
+
+            }
+
+
+
+
+            response.sendRedirect(redirectUrl);
+
+
+
+    }
+
 
 
     protected boolean checkToken() throws ServletException, IOException {

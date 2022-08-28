@@ -1,8 +1,12 @@
 package services;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.servlet.ServletException;
+
+import actions.ActionBase;
 import actions.views.EmployeeConverter;
 import actions.views.EmployeeView;
 import actions.views.ReportConverter;
@@ -109,4 +113,52 @@ public class ReportService extends ServiceBase {
 
     }
 
-}
+
+
+    public class ReportAction extends ActionBase {
+
+
+
+
+
+
+    private GoodService service;
+
+    public void process() throws ServletException, IOException {
+
+        service = new GoodService();
+
+
+
+        invoke();
+        service.close();
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}}
+
+
+
+
+
+
+
+
+
+
+
+
+

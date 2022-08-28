@@ -6,10 +6,15 @@
 <c:set var="actRep" value="${ForwardConst.ACT_REP.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commEdt" value="${ForwardConst.CMD_EDIT.getValue()}" />
-
+<c:set var="commGood" value="${ForwardConst.CMD_GOOD.getValue()}" />
+<c:set var="actGood" value="${ForwardConst.ACT_GOOD.getValue()}" />
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
-
+<c:if test="${flush != null}">
+            <div id="flush_success">
+                <c:out value="${flush}"></c:out>
+            </div>
+        </c:if>
         <h2>日報 詳細ページ</h2>
 
         <table>
@@ -37,8 +42,28 @@
                     <fmt:parseDate value="${report.updatedAt}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="updateDay" type="date" />
                     <td><fmt:formatDate value="${updateDay}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
                 </tr>
+
+
             </tbody>
         </table>
+        <c:if test ="${sessionScope.login_employee.id  == report.employee.id}">
+         <form method="post" action="<c:url value='?action=${actGood}&command=${commGood}&id=${report.id}'/>">
+
+
+
+         <p>
+
+     <input type="hidden" name="_token" value="${_token}" />
+      <input type="hidden" name="report_id" value="${report.id}">
+          <input type="submit" value="いいね">
+         </p>
+
+
+         </form>
+         </c:if>
+
+
+
 
         <c:if test="${sessionScope.login_employee.id == report.employee.id}">
             <p>

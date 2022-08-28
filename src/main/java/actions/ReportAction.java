@@ -16,8 +16,6 @@ import services.ReportService;
 public class ReportAction extends ActionBase {
 
     private ReportService service;
-
-
     @Override
     public void process() throws ServletException, IOException {
 
@@ -26,6 +24,9 @@ public class ReportAction extends ActionBase {
 
         invoke();
         service.close();
+
+
+
     }
 
 
@@ -100,7 +101,8 @@ public class ReportAction extends ActionBase {
                 redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);
             }
         }
-    }public void show() throws ServletException, IOException {
+    }
+    public void show() throws ServletException, IOException {
 
         ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
 
@@ -113,7 +115,8 @@ public class ReportAction extends ActionBase {
 
             forward(ForwardConst.FW_REP_SHOW);
         }
-    }public void edit() throws ServletException, IOException {
+    }
+    public void edit() throws ServletException, IOException {
 
         ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
 
@@ -131,7 +134,8 @@ public class ReportAction extends ActionBase {
             forward(ForwardConst.FW_REP_EDIT);
         }
 
-    }public void update() throws ServletException, IOException {
+    }
+    public void update() throws ServletException, IOException {
 
         if (checkToken()) {
             ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
@@ -158,5 +162,12 @@ public class ReportAction extends ActionBase {
             }
         }
     }
+
+
+
+
+
+
+
 
 }
