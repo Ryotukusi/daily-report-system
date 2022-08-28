@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 
+import actions.views.EmployeeView;
 import actions.views.GoodView;
 import constants.AttributeConst;
 import constants.ForwardConst;
@@ -32,15 +33,17 @@ public class GoodAction extends ActionBase {
 
     public void doPostGood() throws ServletException, IOException {
 
-        getSessionScope(AttributeConst.LOGIN_EMP);
+        EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
+
+       int id= ev.getId();
 
         GoodView rv = new GoodView();
         putRequestScope(AttributeConst.LOGIN_EMP, rv);
         putRequestScope(AttributeConst.REP_ID, rv);
 
-        rv.setReport_id(toNumber(getRequestParam(AttributeConst.EMP_ID)));
+        rv.setReport_id(id);
         rv.setEmployee_id(toNumber(getRequestParam(AttributeConst.REP_ID)));
-        GoodView z = service.findOne(toNumber(getRequestParam(AttributeConst.EMP_ID)));
+        GoodView z = service.findOne(id);
 
         if(z==null){
 
