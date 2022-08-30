@@ -46,7 +46,6 @@
 
             </tbody>
         </table>
-        <c:if test ="${sessionScope.login_employee.id  == report.employee.id}">
          <form method="post" action="<c:url value='?action=${actGood}&command=${commGood}&id=${report.id}'/>">
 
 
@@ -60,7 +59,6 @@
 
 
          </form>
-         </c:if>
 
 
 
